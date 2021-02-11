@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h2 id="question">Question</h2>
+<input id="answer"/>
+<br>
+<button onclick="next_fresh()" id="submit_next"></button>
+
+<label for="tanswer_progress">진행도</label>
+<progress id="tanswer_progress" max={{ len(samples) }} value="0"></progress>
+
+<form method="post" action="/result/" id="form_result">
+
+</form>
+
+</body>
+<script src="{{ url_for('static', filename='js/start.js') }}"></script>
+
+</html>
