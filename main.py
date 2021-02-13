@@ -4,6 +4,7 @@ import flask
 
 import function.structure.data
 from function.reader.exceptions import ReaderWrongException
+from function.structure.exceptions import TDSEmptyException
 
 app = flask.Flask("tanswer")
 
@@ -27,13 +28,23 @@ def fast_start():
         if "file" not in flask.request.files:
             return "wrong"
         f = flask.request.files["file"]
+
+        # when file doesn't exist
+        if f.filename == '':
+            return flask.render_template("fast_start.html")
+
+        # check if file is normally accepted
         try:
             T = function.structure.data.TanswerDataStruct(f.read().decode('utf-8'), "temp", "temp is tempting")
         except ReaderWrongException:
             return "reader wrong"
+        except UnicodeDecodeError:
+            return "not unicode text"
+        except TDSEmptyException:
+            return "tds empty exception"
+
         flask.session["temp-tds"] = T.dict
 
-        # 분기 file이 가능하면 혹은 안가능하면
         return flask.redirect(flask.url_for("ready"), code=307, )
     else:
         return flask.render_template("fast_start.html")

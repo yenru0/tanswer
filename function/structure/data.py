@@ -3,6 +3,7 @@ from typing import List, Dict
 import numpy as np
 
 import function.reader.read
+from function.structure.exceptions import TDSEmptyException
 
 
 class TanswerDataStruct:
@@ -19,6 +20,9 @@ class TanswerDataStruct:
             reader.read()
             self.stages: dict = reader.structure["stages"]  # ser
             self.stageMap: list = list(self.stages.keys())  # ser
+
+        if len(self.stageMap) == 0:
+            raise TDSEmptyException
 
         self.weightShape: tuple = (len(self.stageMap), max([len(self.stages[k]) for k in self.stageMap]))
 

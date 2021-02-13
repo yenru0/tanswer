@@ -7,6 +7,15 @@ let result = [];
 
 let wil = -1;
 
+function checkEnter() {
+    if (event.keyCode === 13) {
+        if (now < wil) {
+            next_fresh();
+        }
+
+    }
+}
+
 function refresh() {
     document.getElementById("tanswer_progress").setAttribute("value", now);
     if (now >= wil) {
