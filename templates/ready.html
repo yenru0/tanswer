@@ -1,18 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Ready</title>
-</head>
-<body>
-<form method="post" action="/start/">
-<input type="number" name="wil" value="10">
-<ol>
-{% for i, stg in enumerate(tds.stageMap) %}
-    <li>{{ stg }} <input type="checkbox" value={{ i }} name="selected-stages"> </li>
-{% endfor %}
-</ol>
-<input type="submit">
-</form>
-</body>
-</html>
+{% set title = "Ready" %}
+{% extends "layout.html" %}
+{% block content %}
+    <form method="post" action="/start/">
+        <input type="number" name="wil" value="10">
+        <ol>
+            {% for i, stg in enumerate(tds.stageMap) %}
+                <li>{{ stg }} <input type="checkbox" value={{ i }} name="selected-stages"></li>
+            {% endfor %}
+        </ol>
+        <input type="submit">
+    </form>
+{% endblock %}

@@ -1,18 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<ol>
-{% for i in result %}
-    <li>{{ i }} / {{ tds.vec2element(i["vector"])[1][0] }} </li>
-{% endfor %}
-</ol>
+{% extends "layout.html" %}
+{% block content %}
+    <ol>
+        {% for i in result %}
+            <li>{{ i }} / {{ tds.vec2element(i["vector"])[1][0] }} </li>
+        {% endfor %}
+    </ol>
 
-<br>
+    <br>
 
-<a href="/ready/">돌아가기</a>
-</body>
-</html>
+    <a href="/ready/">돌아가기</a>
+{% endblock %}
