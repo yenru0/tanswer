@@ -1,11 +1,14 @@
 {% extends "layout.html" %}
 {% block content %}
-    <ol>
-        {% for i in result %}
-            <li>{{ i }} / {{ tds.vec2element(i["vector"])[1][0] }} </li>
-        {% endfor %}
-    </ol>
-
+    <form method="post" action="/add_w/">
+        <ol>
+            {% for i in result %}
+                <li>{{ i }} / {{ tds.vec2element(i["vector"])[1][0] }} <input type="checkbox" value="{{ i["vector"] }}"
+                                                                              name="weight_add"></li>
+            {% endfor %}
+        </ol>
+        <input type="submit"/>
+    </form>
     <br>
 
     <a href="/ready/">돌아가기</a>

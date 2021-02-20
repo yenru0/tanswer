@@ -3,11 +3,17 @@
 {% block content %}
     <form method="post" action="/start/">
         <input type="number" name="wil" value="10">
-        <ol>
-            {% for i, stg in enumerate(tds.stageMap) %}
-                <li>{{ stg }} <input type="checkbox" value={{ i }} name="selected-stages"></li>
-            {% endfor %}
+        <ol id="stage_selects">
         </ol>
         <input type="submit">
     </form>
+{% endblock %}
+{% block prescripts %}
+    <script type="text/javascript">
+        let json_tds = {{ tds | tojson }};
+        {% if tds %}localStorage.setItem("temp-tds", JSON.stringify(json_tds));{% endif %}
+    </script>
+{% endblock %}
+{% block postscripts %}
+    <script src="{{ url_for('static', filename='js/ready.js') }}"></script>
 {% endblock %}
