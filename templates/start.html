@@ -3,7 +3,7 @@
 {% block content %}
     <script src="{{ url_for('static', filename='js/start.js') }}"></script>
     <h2 id="question">Question</h2>
-    <input id="answer"/>
+    <input id="answer" onkeyup="checkEnter();"/>
     <br>
     <button onclick="next_fresh()" id="submit_next"></button>
 
