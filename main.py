@@ -1,13 +1,13 @@
 import json
-import os
 import glob
+import pickle
+import os
 
 import flask
 
 import function.structure.data
 from function.reader.exceptions import ReaderWrongException
 from function.structure.exceptions import TDSEmptyException
-import pickle
 
 app = flask.Flask("tanswer")
 
@@ -182,8 +182,6 @@ def save_as():
 
 
 if __name__ == '__main__':
-    import os
-
     debug = False
     if not os.path.isdir("./dataset"):
         os.mkdir("./dataset")
