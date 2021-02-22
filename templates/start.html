@@ -1,7 +1,6 @@
 {% extends "layout.html" %}
 
 {% block content %}
-    <script src="{{ url_for('static', filename='js/start.js') }}"></script>
     <h2 id="question">Question</h2>
     <input id="answer" onkeyup="checkEnter();"/>
     <br>
@@ -13,4 +12,7 @@
     <form method="post" action="/result/" id="form_result">
 
     </form>
+{% endblock %}
+{% block postscripts %}
+    <script src="{{ url_for('static', filename='js/start.js') }}"></script>
 {% endblock %}

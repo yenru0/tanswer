@@ -23,8 +23,8 @@ class TanswerDataStruct:
 
         if len(self.stageMap) == 0:
             raise TDSEmptyException
-
-        self.weightShape: tuple = (len(self.stageMap), max([len(self.stages[k]) for k in self.stageMap]))
+        self.stage_element_size: list = [len(self.stages[k]) for k in self.stageMap]
+        self.weightShape: tuple = (len(self.stageMap), max(self.stage_element_size))
 
         self.samples = None
 
@@ -33,6 +33,13 @@ class TanswerDataStruct:
         return next(self.samples)
 
     def sampling(self, wil: int, weight: np.ndarray, stages: [None, List[int]] = None) -> list:
+        """
+        'sampling' the questions with weight
+        :param wil:
+        :param weight:
+        :param stages: specific stages to make questions
+        :return: sampling list
+        """
         if weight.shape != self.weightShape:
             raise Exception
 
@@ -50,15 +57,45 @@ class TanswerDataStruct:
     def vec2element(self, vec: tuple):
         return self.stages[self.stageMap[vec[0]]][vec[1]]
 
-    def make_init_weight(self):
+    def make_init_weight(self, default=10):
+        """
+        make default initial weight
+        :param default: default value for initializing
+        :return: weight
+        """
         T = np.zeros(self.weightShape)
         for i, k in enumerate(self.stageMap):
-            T[i, :len(self.stages[k])] = 1
+            T[i, :len(self.stages[k])] = default
         return T
+
+    def valid(self, W: np.ndarray):
+        """
+        check if weight is valid for this structure
+        :param W: weight
+        :return: validity
+        """
+        if not isinstance(W, np.ndarray):
+            return False
+
+        if W.shape == self.weightShape:
+            Wt = W > 0
+            for i, l in enumerate(self.stage_element_size):
+                if Wt[i].sum() != l:
+                    return False
+            return True
+        else:
+            return False
 
     @property
     def dict(self):
-        return {"name": self.name, "desc": self.desc, "stages": self.stages, "stageMap": self.stageMap}
+        """
+        this structure to dict
+        :return: a dictionary
+        """
+        return {"name": self.name,
+                "desc": self.desc,
+                "stages": self.stages,
+                "stageMap": self.stageMap}
 
 
 if __name__ == '__main__':
@@ -70,16 +107,10 @@ byte: 바이트;
 biden: 바이든 주석 각하
 trump: 대미천하 투 황상 폐하
 ##@ 스페시컬<T>
-yangang no mat 맛없갱
+yangang no mat: 맛없갱
 mingnagang: 밍나갱
 jeoleon: 제오레온; 제오런
 
 """, "허경영 추천", "저런")
-    print(TDS.stages)
-    print(TDS.stageMap)
-    print(TDS.weightShape)
-    WW = TDS.make_init_weight()
-    WW[2, (1, 2)] = 53
-    print(WW)
-    for v in TDS.sampling(10, WW, [1, 0, 2, 3], ):
-        print(TDS.vec2element(v))
+
+    print(TDS.valid(TDS.make_init_weight()))

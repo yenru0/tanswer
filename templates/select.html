@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+{% set title = "Select" %}
+{% block content %}
+    <ol>
+        {% for f in files %}
+            <form method="post" action="/compile/">
+                <li>{{ f }}<input type="submit"/><input type="hidden" name="file" value="{{ f }}"></li>
+            </form>
+        {% endfor %}
+    </ol>
+{% endblock %}
