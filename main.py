@@ -182,10 +182,15 @@ def save_as():
 
 
 if __name__ == '__main__':
-    debug = False
     if not os.path.isdir("./dataset"):
         os.mkdir("./dataset")
     if not os.path.isdir("./preference"):
         os.mkdir("./preference")
 
-    app.run(debug=debug)
+    if not os.path.isfile("./config.json"):
+        with open("./config.json", 'w', encoding='utf-8') as f:
+            json.dump({"host": "127.0.0.1", "port": "5000", "debug": False}, f, indent=4)
+    with open("./config.json", 'r', encoding='utf-8') as f:
+        config = json.load(f)
+
+    app.run(host=config["host"], port=config["port"], debug=config["debug"])
