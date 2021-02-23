@@ -2,6 +2,8 @@ import json
 import glob
 import pickle
 import os
+import random
+import hashlib
 
 import flask
 
@@ -9,21 +11,38 @@ import function.structure.data
 from function.reader.exceptions import ReaderWrongException
 from function.structure.exceptions import TDSEmptyException
 
+if not os.path.isdir("./dataset"):
+    os.mkdir("./dataset")
+if not os.path.isdir("./preference"):
+    os.mkdir("./preference")
+
 app = flask.Flask("tanswer")
 
 ### config
-app.config["MAX_CONTENT_LENGTH"] = 32 * 1024 * 1024
+if not os.path.isfile("./config.json"):
+    with open("./config.json", 'w', encoding='utf-8') as f:
+        json.dump({"host": "127.0.0.1", "port": "5000", "debug": False, "filesize": 32}, f, indent=4)
+
+with open("./config.json", 'r', encoding='utf-8') as f:
+    CONFIG = json.load(f)
+
+app.config["MAX_CONTENT_LENGTH"] = int(CONFIG["filesize"] * 1024 * 1024)
 app.jinja_env.globals.update(
     zip=zip, enumerate=enumerate, len=len
 )
 
-app.secret_key = b"the best i know is juhajin"
+app.secret_key = hashlib.sha256(f"{random.uniform(0, 1 << 12)}".encode('utf-8')).digest()
 
 # temporary use this variable to save
 U: function.structure.data.TanswerDataStruct = None
 S: list = None
 X = None
 X_name: str = "W.pkl"
+
+
+@app.errorhandler(413)
+def file_size_error(error):
+    return "file size is so big", 413
 
 
 @app.route("/")
@@ -182,15 +201,4 @@ def save_as():
 
 
 if __name__ == '__main__':
-    if not os.path.isdir("./dataset"):
-        os.mkdir("./dataset")
-    if not os.path.isdir("./preference"):
-        os.mkdir("./preference")
-
-    if not os.path.isfile("./config.json"):
-        with open("./config.json", 'w', encoding='utf-8') as f:
-            json.dump({"host": "127.0.0.1", "port": "5000", "debug": False}, f, indent=4)
-    with open("./config.json", 'r', encoding='utf-8') as f:
-        config = json.load(f)
-
-    app.run(host=config["host"], port=config["port"], debug=config["debug"])
+    app.run(host=CONFIG["host"], port=CONFIG["port"], debug=CONFIG["debug"])
