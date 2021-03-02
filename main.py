@@ -27,7 +27,7 @@ app = flask.Flask("tanswer")
 if not os.path.isfile("./config.json"):
     with open("./config.json", 'w', encoding='utf-8') as f:
         json.dump({"host": "127.0.0.1", "port": "5000", "debug": False,
-                   "filesize": 32, "session_lifetime": 10},
+                   "filesize": 32, "session_lifetime": 150},
                   f,
                   indent=4)
 
