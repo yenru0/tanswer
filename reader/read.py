@@ -1,7 +1,7 @@
 import re
 from typing import List, Dict
 
-from function.reader.exceptions import ReaderWrongException
+from reader.exceptions import TReaderWrongException
 
 
 class Reader:
@@ -12,20 +12,21 @@ class Reader:
 
         self.scope_default = "main"
 
-        self._name: str = None
-        self._description: str = ""
-        self._variables = {}
+        self.name: str = None
+        self.description: str = ""
 
-        self._stages: Dict[str, list] = {'main': []}
+        self.variables = {}
+
+        self.stages: Dict[str, list] = {'main': []}
 
     def read(self):
         self.preprocess()
         self.parse()
 
         ### post
-        for k in list(self._stages.keys()):
-            if not self._stages[k]:
-                del self._stages[k]
+        for k in list(self.stages.keys()):
+            if not self.stages[k]:
+                del self.stages[k]
 
     def preprocess(self) -> None:
         """
@@ -61,8 +62,8 @@ class Reader:
             t = self.parse_stage(s, i)
             if t is not False:
                 scope = t
-                if scope not in self._stages:
-                    self._stages[scope] = []
+                if scope not in self.stages:
+                    self.stages[scope] = []
                 continue
 
             t = self.parse_command(s, i)
@@ -71,10 +72,10 @@ class Reader:
 
             t = self.parse_element(s, i)
             if t is not False:
-                self._stages[scope].append(t)
+                self.stages[scope].append(t)
                 continue
 
-            raise ReaderWrongException(f"unexpected expression: something wrong")
+            raise TReaderWrongException(f"unexpected expression: something wrong")
 
     def parse_stage(self, s: str, ln: int) -> [str, bool]:
         """
@@ -123,35 +124,19 @@ class Reader:
         else:
             return False
 
-    @property
-    def structure(self) -> dict:
-        """
-        convert information of this reader to dictionary to be processed easily in ADS.
-        keys:
-        | name
-        | description
-        | detail_infile
-        | cond
-        | stages
-        :return: dict
-        """
-        return {
-            "stages": self._stages
-        }
-
 
 if __name__ == '__main__':
     r = Reader("""
 
-##@ 결단력S
-word: 단어; 바이트
-##@ 킹단력K ### 주석
-byte: 바이트;
-biden: 바이든 주석 각하
-##@ 스페시컬<T>
+##@ TA ### '##@' must be start of line
+B: C; D
+##@ TE ### comment
+F: G;;;
+H: ;J ### valid
+##@ TK ### excepted stage
 
 """)
 
     r.read()
     print(r.src_iter)
-    print(r.structure)
+    print(r.stages)
