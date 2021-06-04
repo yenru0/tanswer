@@ -1,23 +1,32 @@
 import re
 from typing import List, Dict
+import io
+import os
 
 from reader.exceptions import TReaderWrongException
 
 
 class Reader:
-    def __init__(self, src: str):
-        self.src: str = src
-        self.src_size: int = len(src)
+    def __init__(self, src: [str, io.TextIOWrapper]):
+        if isinstance(src, io.TextIOBase):
+            self.src: str = src.read()
+            if isinstance(src, io.TextIOWrapper):
+                self.name = os.path.splitext(os.path.basename(src.name))[0]
+            else:
+                self.name = "IO-test"
+        else:
+            self.src: str = src
+            self.name: str = "str-test"
+
+        self.src_size: int = len(self.src)
         self.src_iter: List[str] = []
 
-        self.scope_default = "main"
-
-        self.name: str = None
         self.description: str = ""
 
         self.variables = {}
 
-        self.stages: Dict[str, list] = {'main': []}
+        self.scope_default = "main"
+        self.stages: Dict[str, list] = {self.scope_default: []}
 
     def read(self):
         self.preprocess()

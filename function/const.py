@@ -1,0 +1,5 @@
+DATASET_ROUTE = "./dataset/"
+PREFERENCE_ROUTE = "./preference/"
+WEIGHT_PREFERENCE_ROUTE = PREFERENCE_ROUTE + "weight/"
+
+DEFAULT_WIL = 10

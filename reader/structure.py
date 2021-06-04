@@ -8,13 +8,15 @@ from reader.exceptions import TDSEmptyException, TDSIllegalWeightException
 
 class TanswerDataStruct:
     def __init__(self, reader: Reader):
+        self.reader = reader
+
         self.name: str = reader.name
         self.description: str = reader.description
         self.stages: Dict[str, list] = reader.stages  # TODO: OrderedDict로 바꿀 필요성
         self.stage_list: list = list(reader.stages.keys())
         self.stage_dict: Dict[str, int] = {s: i for i, s in enumerate(self.stage_list)}
         self.stage_element_size: Dict[str, int] = {s: len(self.stages[s]) for s in self.stage_list}
-        if len(self.stage_list) == 0:
+        if self.stage_size == 0:
             raise TDSEmptyException
 
         self.weight_shape: tuple = (len(self.stage_list), max(self.stage_element_size.values()))
@@ -68,6 +70,9 @@ class TanswerDataStruct:
             "stages": self.stages
         }
 
+    @property
+    def stage_size(self):
+        return len(self.stage_list)
 
 if __name__ == "__main__":
     r = Reader("""

@@ -17,7 +17,7 @@ class Ui_MainPlate(object):
     def setupUi(self, MainPlate):
         if not MainPlate.objectName():
             MainPlate.setObjectName(u"MainPlate")
-        MainPlate.resize(737, 588)
+        MainPlate.resize(777, 588)
         self.centralwidget = QWidget(MainPlate)
         self.centralwidget.setObjectName(u"centralwidget")
         self.gridLayout_5 = QGridLayout(self.centralwidget)
@@ -131,15 +131,6 @@ class Ui_MainPlate(object):
 
         self.verticalLayout_5.addWidget(self.btn_title_btn1)
 
-        self.btn_title_btn4 = QPushButton(self.frame_title_btns)
-        self.btn_title_btn4.setObjectName(u"btn_title_btn4")
-        sizePolicy2.setHeightForWidth(self.btn_title_btn4.sizePolicy().hasHeightForWidth())
-        self.btn_title_btn4.setSizePolicy(sizePolicy2)
-        self.btn_title_btn4.setMinimumSize(QSize(200, 40))
-        self.btn_title_btn4.setMaximumSize(QSize(200, 40))
-
-        self.verticalLayout_5.addWidget(self.btn_title_btn4)
-
         self.btn_title_btn2 = QPushButton(self.frame_title_btns)
         self.btn_title_btn2.setObjectName(u"btn_title_btn2")
         sizePolicy2.setHeightForWidth(self.btn_title_btn2.sizePolicy().hasHeightForWidth())
@@ -157,6 +148,15 @@ class Ui_MainPlate(object):
         self.btn_title_btn3.setMaximumSize(QSize(200, 40))
 
         self.verticalLayout_5.addWidget(self.btn_title_btn3)
+
+        self.btn_title_btn4 = QPushButton(self.frame_title_btns)
+        self.btn_title_btn4.setObjectName(u"btn_title_btn4")
+        sizePolicy2.setHeightForWidth(self.btn_title_btn4.sizePolicy().hasHeightForWidth())
+        self.btn_title_btn4.setSizePolicy(sizePolicy2)
+        self.btn_title_btn4.setMinimumSize(QSize(200, 40))
+        self.btn_title_btn4.setMaximumSize(QSize(200, 40))
+
+        self.verticalLayout_5.addWidget(self.btn_title_btn4)
 
 
         self.verticalLayout_4.addWidget(self.frame_title_btns, 0, Qt.AlignHCenter)
@@ -225,7 +225,9 @@ class Ui_MainPlate(object):
         self.frame_select.setFrameShape(QFrame.StyledPanel)
         self.frame_select.setFrameShadow(QFrame.Raised)
         self.verticalLayout_8 = QVBoxLayout(self.frame_select)
+        self.verticalLayout_8.setSpacing(0)
         self.verticalLayout_8.setObjectName(u"verticalLayout_8")
+        self.verticalLayout_8.setContentsMargins(0, 0, 0, 0)
         self.lbl_select = QLabel(self.frame_select)
         self.lbl_select.setObjectName(u"lbl_select")
 
@@ -241,12 +243,9 @@ class Ui_MainPlate(object):
 
         self.frame_sl_fileinfo = QFrame(self.page_select)
         self.frame_sl_fileinfo.setObjectName(u"frame_sl_fileinfo")
-        self.frame_sl_fileinfo.setEnabled(False)
-        sizePolicy5 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.MinimumExpanding)
-        sizePolicy5.setHorizontalStretch(0)
-        sizePolicy5.setVerticalStretch(0)
-        sizePolicy5.setHeightForWidth(self.frame_sl_fileinfo.sizePolicy().hasHeightForWidth())
-        self.frame_sl_fileinfo.setSizePolicy(sizePolicy5)
+        self.frame_sl_fileinfo.setEnabled(True)
+        sizePolicy4.setHeightForWidth(self.frame_sl_fileinfo.sizePolicy().hasHeightForWidth())
+        self.frame_sl_fileinfo.setSizePolicy(sizePolicy4)
         self.frame_sl_fileinfo.setFrameShape(QFrame.StyledPanel)
         self.frame_sl_fileinfo.setFrameShadow(QFrame.Sunken)
         self.frame_sl_fileinfo.setLineWidth(2)
@@ -315,10 +314,20 @@ class Ui_MainPlate(object):
 
         self.verticalLayout_9.addLayout(self.layout_tanswering_info)
 
-        self.text_tanswering_view = QTextBrowser(self.page_tanswering)
+        self.frame_tanswering_view = QFrame(self.page_tanswering)
+        self.frame_tanswering_view.setObjectName(u"frame_tanswering_view")
+        self.frame_tanswering_view.setFrameShape(QFrame.StyledPanel)
+        self.frame_tanswering_view.setFrameShadow(QFrame.Raised)
+        self.gridLayout_9 = QGridLayout(self.frame_tanswering_view)
+        self.gridLayout_9.setObjectName(u"gridLayout_9")
+        self.gridLayout_9.setContentsMargins(0, 4, 0, 4)
+        self.text_tanswering_view = QTextBrowser(self.frame_tanswering_view)
         self.text_tanswering_view.setObjectName(u"text_tanswering_view")
 
-        self.verticalLayout_9.addWidget(self.text_tanswering_view)
+        self.gridLayout_9.addWidget(self.text_tanswering_view, 0, 0, 1, 1)
+
+
+        self.verticalLayout_9.addWidget(self.frame_tanswering_view)
 
         self.frame_tanswering_input = QFrame(self.page_tanswering)
         self.frame_tanswering_input.setObjectName(u"frame_tanswering_input")
@@ -355,20 +364,9 @@ class Ui_MainPlate(object):
         self.gridLayout_4.setObjectName(u"gridLayout_4")
         self.gridLayout_4.setHorizontalSpacing(24)
         self.gridLayout_4.setVerticalSpacing(9)
-        self.lbl_tanswermenu_wil = QLabel(self.page_tanswermenu)
-        self.lbl_tanswermenu_wil.setObjectName(u"lbl_tanswermenu_wil")
+        self.vspacer_tanswermenu = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
-        self.gridLayout_4.addWidget(self.lbl_tanswermenu_wil, 0, 0, 1, 1)
-
-        self.spbox_tanswermenu_wil = QSpinBox(self.page_tanswermenu)
-        self.spbox_tanswermenu_wil.setObjectName(u"spbox_tanswermenu_wil")
-
-        self.gridLayout_4.addWidget(self.spbox_tanswermenu_wil, 0, 1, 1, 1)
-
-        self.lbl_tanswermenu_weight = QLabel(self.page_tanswermenu)
-        self.lbl_tanswermenu_weight.setObjectName(u"lbl_tanswermenu_weight")
-
-        self.gridLayout_4.addWidget(self.lbl_tanswermenu_weight, 1, 0, 1, 1)
+        self.gridLayout_4.addItem(self.vspacer_tanswermenu, 3, 1, 1, 1)
 
         self.frame_tanswermenu_weight = QFrame(self.page_tanswermenu)
         self.frame_tanswermenu_weight.setObjectName(u"frame_tanswermenu_weight")
@@ -376,6 +374,7 @@ class Ui_MainPlate(object):
         self.frame_tanswermenu_weight.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_4 = QHBoxLayout(self.frame_tanswermenu_weight)
         self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
+        self.horizontalLayout_4.setContentsMargins(0, 3, 0, 3)
         self.btn_tanswermenu_weight_browse = QPushButton(self.frame_tanswermenu_weight)
         self.btn_tanswermenu_weight_browse.setObjectName(u"btn_tanswermenu_weight_browse")
 
@@ -383,20 +382,49 @@ class Ui_MainPlate(object):
 
         self.lbl_tanswermenu_weight_browse = QLabel(self.frame_tanswermenu_weight)
         self.lbl_tanswermenu_weight_browse.setObjectName(u"lbl_tanswermenu_weight_browse")
-        sizePolicy6 = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Preferred)
-        sizePolicy6.setHorizontalStretch(0)
-        sizePolicy6.setVerticalStretch(0)
-        sizePolicy6.setHeightForWidth(self.lbl_tanswermenu_weight_browse.sizePolicy().hasHeightForWidth())
-        self.lbl_tanswermenu_weight_browse.setSizePolicy(sizePolicy6)
+        sizePolicy5 = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Preferred)
+        sizePolicy5.setHorizontalStretch(0)
+        sizePolicy5.setVerticalStretch(0)
+        sizePolicy5.setHeightForWidth(self.lbl_tanswermenu_weight_browse.sizePolicy().hasHeightForWidth())
+        self.lbl_tanswermenu_weight_browse.setSizePolicy(sizePolicy5)
+        self.lbl_tanswermenu_weight_browse.setScaledContents(True)
+        self.lbl_tanswermenu_weight_browse.setWordWrap(True)
+        self.lbl_tanswermenu_weight_browse.setTextInteractionFlags(Qt.LinksAccessibleByMouse|Qt.TextSelectableByKeyboard|Qt.TextSelectableByMouse)
 
         self.horizontalLayout_4.addWidget(self.lbl_tanswermenu_weight_browse)
+
+        self.btn_tanswermenu_weight_reset = QPushButton(self.frame_tanswermenu_weight)
+        self.btn_tanswermenu_weight_reset.setObjectName(u"btn_tanswermenu_weight_reset")
+        sizePolicy6 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Fixed)
+        sizePolicy6.setHorizontalStretch(0)
+        sizePolicy6.setVerticalStretch(0)
+        sizePolicy6.setHeightForWidth(self.btn_tanswermenu_weight_reset.sizePolicy().hasHeightForWidth())
+        self.btn_tanswermenu_weight_reset.setSizePolicy(sizePolicy6)
+        self.btn_tanswermenu_weight_reset.setMinimumSize(QSize(50, 0))
+        self.btn_tanswermenu_weight_reset.setMaximumSize(QSize(50, 16777215))
+
+        self.horizontalLayout_4.addWidget(self.btn_tanswermenu_weight_reset)
 
 
         self.gridLayout_4.addWidget(self.frame_tanswermenu_weight, 1, 1, 1, 1)
 
-        self.vspacer_tanswermenu = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+        self.lbl_tanswermenu_weight = QLabel(self.page_tanswermenu)
+        self.lbl_tanswermenu_weight.setObjectName(u"lbl_tanswermenu_weight")
 
-        self.gridLayout_4.addItem(self.vspacer_tanswermenu, 2, 1, 1, 1)
+        self.gridLayout_4.addWidget(self.lbl_tanswermenu_weight, 1, 0, 1, 1, Qt.AlignTop)
+
+        self.spbox_tanswermenu_wil = QSpinBox(self.page_tanswermenu)
+        self.spbox_tanswermenu_wil.setObjectName(u"spbox_tanswermenu_wil")
+        self.spbox_tanswermenu_wil.setMinimum(1)
+        self.spbox_tanswermenu_wil.setMaximum(6543)
+        self.spbox_tanswermenu_wil.setValue(10)
+
+        self.gridLayout_4.addWidget(self.spbox_tanswermenu_wil, 0, 1, 1, 1)
+
+        self.lbl_tanswermenu_wil = QLabel(self.page_tanswermenu)
+        self.lbl_tanswermenu_wil.setObjectName(u"lbl_tanswermenu_wil")
+
+        self.gridLayout_4.addWidget(self.lbl_tanswermenu_wil, 0, 0, 1, 1, Qt.AlignTop)
 
         self.btn_tanswermenu_execute = QPushButton(self.page_tanswermenu)
         self.btn_tanswermenu_execute.setObjectName(u"btn_tanswermenu_execute")
@@ -409,7 +437,17 @@ class Ui_MainPlate(object):
         self.btn_tanswermenu_execute.setMaximumSize(QSize(150, 25))
         self.btn_tanswermenu_execute.setLayoutDirection(Qt.RightToLeft)
 
-        self.gridLayout_4.addWidget(self.btn_tanswermenu_execute, 3, 1, 1, 1)
+        self.gridLayout_4.addWidget(self.btn_tanswermenu_execute, 4, 1, 1, 1)
+
+        self.label = QLabel(self.page_tanswermenu)
+        self.label.setObjectName(u"label")
+
+        self.gridLayout_4.addWidget(self.label, 2, 0, 1, 1, Qt.AlignTop)
+
+        self.list_tanswermenu_stages = QListWidget(self.page_tanswermenu)
+        self.list_tanswermenu_stages.setObjectName(u"list_tanswermenu_stages")
+
+        self.gridLayout_4.addWidget(self.list_tanswermenu_stages, 2, 1, 1, 1)
 
         self.gridLayout_4.setColumnStretch(0, 1)
         self.gridLayout_4.setColumnStretch(1, 10)
@@ -418,12 +456,63 @@ class Ui_MainPlate(object):
         self.page_result.setObjectName(u"page_result")
         self.gridLayout_6 = QGridLayout(self.page_result)
         self.gridLayout_6.setObjectName(u"gridLayout_6")
-        self.lbl_result = QLabel(self.page_result)
+        self.frame_result_top = QFrame(self.page_result)
+        self.frame_result_top.setObjectName(u"frame_result_top")
+        self.frame_result_top.setFrameShape(QFrame.StyledPanel)
+        self.frame_result_top.setFrameShadow(QFrame.Raised)
+        self.gridLayout_8 = QGridLayout(self.frame_result_top)
+        self.gridLayout_8.setSpacing(0)
+        self.gridLayout_8.setObjectName(u"gridLayout_8")
+        self.gridLayout_8.setContentsMargins(0, 0, 0, 0)
+        self.lbl_result = QLabel(self.frame_result_top)
         self.lbl_result.setObjectName(u"lbl_result")
-        self.lbl_result.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignTop)
-        self.lbl_result.setWordWrap(True)
 
-        self.gridLayout_6.addWidget(self.lbl_result, 0, 0, 1, 1)
+        self.gridLayout_8.addWidget(self.lbl_result, 0, 0, 1, 1)
+
+        self.btn_save_receipt = QPushButton(self.frame_result_top)
+        self.btn_save_receipt.setObjectName(u"btn_save_receipt")
+        self.btn_save_receipt.setMinimumSize(QSize(32, 32))
+        self.btn_save_receipt.setMaximumSize(QSize(32, 32))
+
+        self.gridLayout_8.addWidget(self.btn_save_receipt, 0, 1, 1, 1)
+
+        self.btn_save_weight = QPushButton(self.frame_result_top)
+        self.btn_save_weight.setObjectName(u"btn_save_weight")
+        self.btn_save_weight.setMinimumSize(QSize(32, 32))
+        self.btn_save_weight.setMaximumSize(QSize(32, 32))
+
+        self.gridLayout_8.addWidget(self.btn_save_weight, 0, 2, 1, 1)
+
+
+        self.gridLayout_6.addWidget(self.frame_result_top, 1, 0, 1, 1)
+
+        self.frame_result_gotos = QFrame(self.page_result)
+        self.frame_result_gotos.setObjectName(u"frame_result_gotos")
+        self.frame_result_gotos.setFrameShape(QFrame.StyledPanel)
+        self.frame_result_gotos.setFrameShadow(QFrame.Raised)
+        self.gridLayout_7 = QGridLayout(self.frame_result_gotos)
+        self.gridLayout_7.setObjectName(u"gridLayout_7")
+        self.btn_result_goto_main = QPushButton(self.frame_result_gotos)
+        self.btn_result_goto_main.setObjectName(u"btn_result_goto_main")
+        self.btn_result_goto_main.setMinimumSize(QSize(150, 0))
+        self.btn_result_goto_main.setMaximumSize(QSize(150, 16777215))
+
+        self.gridLayout_7.addWidget(self.btn_result_goto_main, 0, 0, 1, 1)
+
+        self.btn_result_goto_tanswermenu = QPushButton(self.frame_result_gotos)
+        self.btn_result_goto_tanswermenu.setObjectName(u"btn_result_goto_tanswermenu")
+        self.btn_result_goto_tanswermenu.setMinimumSize(QSize(150, 0))
+        self.btn_result_goto_tanswermenu.setMaximumSize(QSize(150, 16777215))
+
+        self.gridLayout_7.addWidget(self.btn_result_goto_tanswermenu, 0, 1, 1, 1)
+
+
+        self.gridLayout_6.addWidget(self.frame_result_gotos, 3, 0, 1, 1)
+
+        self.table_result = QTableWidget(self.page_result)
+        self.table_result.setObjectName(u"table_result")
+
+        self.gridLayout_6.addWidget(self.table_result, 2, 0, 1, 1)
 
         self.front.addWidget(self.page_result)
 
@@ -453,9 +542,9 @@ class Ui_MainPlate(object):
         self.lbl_side_user.setText(QCoreApplication.translate("MainPlate", u"user_info", None))
         self.lbl_title.setText(QCoreApplication.translate("MainPlate", u"Tanswer Dev", None))
         self.btn_title_btn1.setText(QCoreApplication.translate("MainPlate", u"\ube60\ub978 \uc2dc\uc791", None))
-        self.btn_title_btn4.setText(QCoreApplication.translate("MainPlate", u"\uc2dc\uc791", None))
-        self.btn_title_btn2.setText(QCoreApplication.translate("MainPlate", u"\uc635\uc158", None))
-        self.btn_title_btn3.setText(QCoreApplication.translate("MainPlate", u"\uc815\ubcf4", None))
+        self.btn_title_btn2.setText(QCoreApplication.translate("MainPlate", u"\uc2dc\uc791", None))
+        self.btn_title_btn3.setText(QCoreApplication.translate("MainPlate", u"\uc635\uc158", None))
+        self.btn_title_btn4.setText(QCoreApplication.translate("MainPlate", u"\uc815\ubcf4", None))
         self.lbl_faststart.setText(QCoreApplication.translate("MainPlate", u"\ube60\ub978 \uc2dc\uc791", None))
         self.btn_filebrowse.setText(QCoreApplication.translate("MainPlate", u"\ud30c\uc77c \ubd88\ub7ec\uc624\uae30", None))
         self.lbl_select.setText(QCoreApplication.translate("MainPlate", u"\uc800\uc7a5\ub41c \ud30c\uc77c \uc120\ud0dd", None))
@@ -466,11 +555,19 @@ class Ui_MainPlate(object):
         self.lbl_tanswering_vec.setText(QCoreApplication.translate("MainPlate", u"TextLabel", None))
         self.ledit_tanswering_input.setText(QCoreApplication.translate("MainPlate", u"$input", None))
         self.btn_tanswering_input.setText(QCoreApplication.translate("MainPlate", u"\uc785\ub825", None))
-        self.lbl_tanswermenu_wil.setText(QCoreApplication.translate("MainPlate", u"\uac1c\uc218", None))
-        self.lbl_tanswermenu_weight.setText(QCoreApplication.translate("MainPlate", u"\uac00\uc911", None))
         self.btn_tanswermenu_weight_browse.setText(QCoreApplication.translate("MainPlate", u"\uac00\uc911\uce58 \uac80\uc0c9", None))
         self.lbl_tanswermenu_weight_browse.setText(QCoreApplication.translate("MainPlate", u"\ud30c\uc77c\uc774 \uc5c6\uc2b5\ub2c8\ub2e4.", None))
+        self.btn_tanswermenu_weight_reset.setText(QCoreApplication.translate("MainPlate", u"\ucd08\uae30\ud654", None))
+        self.lbl_tanswermenu_weight.setText(QCoreApplication.translate("MainPlate", u"\uac00\uc911", None))
+        self.spbox_tanswermenu_wil.setSuffix(QCoreApplication.translate("MainPlate", u" will", None))
+        self.spbox_tanswermenu_wil.setPrefix("")
+        self.lbl_tanswermenu_wil.setText(QCoreApplication.translate("MainPlate", u"\uac1c\uc218", None))
         self.btn_tanswermenu_execute.setText(QCoreApplication.translate("MainPlate", u"\uc2e4\ud589", None))
-        self.lbl_result.setText(QCoreApplication.translate("MainPlate", u"TextLabel", None))
+        self.label.setText(QCoreApplication.translate("MainPlate", u"\uc2a4\ud14c\uc774\uc9c0", None))
+        self.lbl_result.setText(QCoreApplication.translate("MainPlate", u"\uacb0\uacfc:", None))
+        self.btn_save_receipt.setText(QCoreApplication.translate("MainPlate", u"SR", None))
+        self.btn_save_weight.setText(QCoreApplication.translate("MainPlate", u"SW", None))
+        self.btn_result_goto_main.setText(QCoreApplication.translate("MainPlate", u"\uba54\uc778\uc73c\ub85c", None))
+        self.btn_result_goto_tanswermenu.setText(QCoreApplication.translate("MainPlate", u"\ud0e0\uc11c \uba54\ub274\ub85c", None))
     # retranslateUi
 

@@ -43,12 +43,19 @@ class Ui_fileinfo(object):
 
         self.verticalLayout.addWidget(self.lbl_info_2)
 
-        self.btn_info = QPushButton(self.frame_info)
-        self.btn_info.setObjectName(u"btn_info")
-        self.btn_info.setMinimumSize(QSize(200, 0))
-        self.btn_info.setMaximumSize(QSize(200, 16777215))
+        self.btn_save = QPushButton(self.frame_info)
+        self.btn_save.setObjectName(u"btn_save")
+        self.btn_save.setMinimumSize(QSize(150, 0))
+        self.btn_save.setMaximumSize(QSize(150, 16777215))
 
-        self.verticalLayout.addWidget(self.btn_info, 0, Qt.AlignHCenter)
+        self.verticalLayout.addWidget(self.btn_save, 0, Qt.AlignHCenter)
+
+        self.btn_execute = QPushButton(self.frame_info)
+        self.btn_execute.setObjectName(u"btn_execute")
+        self.btn_execute.setMinimumSize(QSize(150, 0))
+        self.btn_execute.setMaximumSize(QSize(150, 16777215))
+
+        self.verticalLayout.addWidget(self.btn_execute, 0, Qt.AlignHCenter)
 
 
         self.horizontalLayout.addWidget(self.frame_info)
@@ -64,6 +71,7 @@ class Ui_fileinfo(object):
         self.lbl_filename.setText(QCoreApplication.translate("fileinfo", u"\ud30c\uc77c\uc774\ub984", None))
         self.lbl_info_1.setText(QCoreApplication.translate("fileinfo", u"TextLabel", None))
         self.lbl_info_2.setText(QCoreApplication.translate("fileinfo", u"TextLabel", None))
-        self.btn_info.setText(QCoreApplication.translate("fileinfo", u"\uc2e4\ud589", None))
+        self.btn_save.setText(QCoreApplication.translate("fileinfo", u"\uc800\uc7a5", None))
+        self.btn_execute.setText(QCoreApplication.translate("fileinfo", u"\uc2e4\ud589", None))
     # retranslateUi
 
